@@ -1,0 +1,46 @@
+/* * {
+  margin: 0;
+
+} */
+
+body {
+  background-color: #39393a;
+}
+
+header {
+  background-color: #ff8552;
+  text-align: center;
+}
+
+input {
+  border-width: 0;
+  background-color: grey;
+  outline: none;
+}
+
+button {
+  height: 100%;
+  border-width: 0;
+  background-color: grey;
+  outline: none;
+  cursor: pointer;
+}
+
+div.search {
+  display: flex;
+  justify-content: center;
+}
+
+div.input-wrapper{
+  display: flex;
+  justify-content: center;
+}
+
+div.weather-card {
+  max-width: 600px;
+  outline-width: 1px;
+  outline-color: black;
+  outline-style: solid;
+  margin: 0 auto;
+}
+
