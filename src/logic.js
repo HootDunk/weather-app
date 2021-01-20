@@ -1,14 +1,12 @@
-
-
 const getData = () => {
   let userData;
   if (localStorage.length) {
-    userData = JSON.parse(localStorage.getItem('user'));
+    userData = JSON.parse(localStorage.getItem("user"));
   } else {
     userData = {
-      units: 'imperial',
-      places: ['Dallas', "New York"],
-    }
+      units: "imperial",
+      places: ["Dallas", "New York"],
+    };
   }
   return userData;
 };
@@ -51,13 +49,6 @@ const processWeatherJSON = async (cityName) => {
   }
 };
 
-
 const userData = getData();
 
-
-
-
-export {
-  userData,
-  processWeatherJSON,
-}
+export { userData, processWeatherJSON };
