@@ -16,8 +16,10 @@ const getWeatherJSON = async (cityName) => {
   const appID = "d8d60c8c859cb3e31ebf243960d9c642";
   try {
     const response = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=${appID}`, {mode: 'cors'}
-    );
+      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=${appID}`,
+      {
+        mode: "cors"
+      });
     const data = await response.json();
     return data;
   } catch (error) {

@@ -25,7 +25,7 @@ const createCard = (obj, desiredUnit) => {
   </div>
   <div class="row weather-img">
     <figure>
-      <img src="http://openweathermap.org/img/wn/${obj.icon}@4x.png" alt="${
+      <img src="https://openweathermap.org/img/wn/${obj.icon}@4x.png" alt="${
     obj.description
   }">
       <figcaption>${obj.description}</figcaption>
