@@ -1,49 +1,41 @@
-import testing from './test'
+import { userData, processWeatherJSON } from "./logic";
+import { renderCard } from "./DOMContent";
 
 
-// make temps have subfield of the temp and the unit
-// then use the temp.unit with conditionals in the conversion funciton
+// formSubmitEvent();
+const form = document.getElementById("weather-form");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const city = form['city'].value;
+  processWeatherJSON(city).then((res) => {
+    renderCard(res, userData.units)
+    userData.places.push(res.name)
+    localStorage.setItem('user', JSON.stringify(userData));
+  })
+})
 
-const appID = 'd8d60c8c859cb3e31ebf243960d9c642';
-
-testing();
-
-
-
-// Makes a request to the weather API for weather data based on city name
-const getWeatherJSON = async (cityName, units) => {
-  try {
-    const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=${units}&APPID=${appID}`)
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    // code to handle error goes here
-    throw error;
-  }
-}
-
-// consider doing a try catch in the top level function call only as the promise err will pass through the chain to the end
-// processes json data and returns object with only data required for our app
-const processWeatherJSON = async (cityName, units) => {
-  let json = await getWeatherJSON(cityName, units);
-  // create code to break json down here
+// consider re-writing for clarity
+const loadWeatherCards = async (obj) => {
+  Promise.all(obj.places.map(async (place) => {
+    let data = await processWeatherJSON(place);
+    renderCard(data, userData.units);
+  }))
 }
 
 
-let data = getWeatherJSON('wildwood', 'imperial');
-data.then((data)=> console.log(data))
+loadWeatherCards(userData)
 
 
-
-// Write out the data requirements for the app here
-  // temperature (temp and temp unit)
-  // sunrise & sunset
-  // country
-  // weather description
-  // name
 
 
 // Separation of concerns
   // DOMstuff.js has all dom stuff
   // logic.js has code for data requests and cleaning
   // index.js has the event listeners
+
+//call getWeatherImage in processWeatherJSON to create proper object
+// include description underneath the image
+// can just use the url with the proper format in the image source actually
+
+// consider a blue color them for colder weather? like 40s and below
+// maybe cold, neutral, and warm color scheme?

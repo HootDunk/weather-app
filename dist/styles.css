@@ -41,7 +41,20 @@ input {
   background-color: grey;
   outline: none;
   width: 250px;
+  border-radius: 0.8rem 0 0 0.8rem;
+  color: white;
+  font-size: 20px;
+  padding-left: 10px;
+}
 
+input::placeholder {
+  color: white;
+}
+
+figcaption {
+  font-size: 20px;
+  margin-top: 20px;
+  color: white;
 }
 
 button {
@@ -50,6 +63,7 @@ button {
   background-color: grey;
   outline: none;
   cursor: pointer;
+  border-radius: 0 .8rem .8rem 0;
 }
 
 .search-container {
@@ -60,15 +74,17 @@ button {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 60%;
-  margin: 0 auto;
+  padding-top: 20px;
+  padding-left: 20%;
+  padding-right: 20%;
+
 }
 
 .card {
   background-color:#fc9e4f;
   width: 300px;
   height: 400px;
-  margin: 10px;
+  margin: 10px 20px 10px 20px;
   padding: 15px;
   border-radius: 0.8rem;
   display: flex;
@@ -81,13 +97,8 @@ button {
   color: #e3655b;
 }
 
-i.weather {
-  margin: 10px;
-}
-
 h1.temp {
   font-size: 5em;
-  
 }
 
 h2.sun {
@@ -97,4 +108,18 @@ h2.sun {
 div.row.sun {
   display: flex;
   justify-content: space-around;
+}
+
+
+i.fas.fa-times {
+  float: right;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+img {
+  margin-bottom: -80px;
+  margin-top: -80px;
+  height: 250px;
+  width: 250px;
 }
