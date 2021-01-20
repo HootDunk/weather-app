@@ -1,46 +1,100 @@
-/* * {
-  margin: 0;
 
-} */
+* {
+  margin: 0;
+  padding: 0;
+  color: #08415c;
+  
+}
 
 body {
-  background-color: #39393a;
+  background-color: #1a1423 ;
+  font-family: "Open Sans", sans-serif;
 }
 
 header {
-  background-color: #ff8552;
-  text-align: center;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 1.2em;
+
+} 
+
+header h1, i {
+  color: #E3F2FD;
+}
+
+div.search-container{
+  padding: 10px;
+  background-color: #a63446;
+}
+
+div.input-wrapper{
+  display: flex;
+  justify-content: center;
+  height: 30px;
+}
+
+.search {
+  margin: 10px;
 }
 
 input {
   border-width: 0;
   background-color: grey;
   outline: none;
+  width: 250px;
+
 }
 
 button {
-  height: 100%;
+  width: 30px;
   border-width: 0;
   background-color: grey;
   outline: none;
   cursor: pointer;
 }
 
-div.search {
-  display: flex;
-  justify-content: center;
+.search-container {
+  text-align: center;
 }
 
-div.input-wrapper{
+.card-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-}
-
-div.weather-card {
-  max-width: 600px;
-  outline-width: 1px;
-  outline-color: black;
-  outline-style: solid;
+  width: 60%;
   margin: 0 auto;
 }
 
+.card {
+  background-color:#fc9e4f;
+  width: 300px;
+  height: 400px;
+  margin: 10px;
+  padding: 15px;
+  border-radius: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  text-align: center;
+}
+
+.card h1  {
+  color: #e3655b;
+}
+
+i.weather {
+  margin: 10px;
+}
+
+h1.temp {
+  font-size: 5em;
+  
+}
+
+h2.sun {
+  display: inline-block;
+}
+
+div.row.sun {
+  display: flex;
+  justify-content: space-around;
+}
