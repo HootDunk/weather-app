@@ -25,4 +25,11 @@ const loadWeatherCards = async (obj) => {
   );
 };
 
+
 loadWeatherCards(userData);
+// if (localStorage.length) {
+//   loadWeatherCards(userData);
+// }
+// else {
+
+// }
