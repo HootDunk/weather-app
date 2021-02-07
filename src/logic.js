@@ -51,6 +51,10 @@ const processWeatherJSON = async (cityName) => {
   }
 };
 
+let userData = {
+  units: "imperial",
+  places: ["Dallas", "New York"],
+}
 
+export {userData, processWeatherJSON };
 
-export { processWeatherJSON };
