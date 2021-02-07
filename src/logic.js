@@ -51,6 +51,6 @@ const processWeatherJSON = async (cityName) => {
   }
 };
 
-const userData = getData();
 
-export { userData, processWeatherJSON };
+
+export { processWeatherJSON };
