@@ -1,7 +1,7 @@
 const getData = () => {
   let userData;
   if (localStorage.length) {
-    userData = JSON.parse(localStorage.getItem("user"));
+    userData = JSON.parse(localStorage.getItem("weather-app-user"));
   } else {
     userData = {
       units: "imperial",
