@@ -1,5 +1,10 @@
-import { userData, processWeatherJSON } from "./logic";
+import { processWeatherJSON } from "./logic";
 import { radioBtnEvents, renderCard, setActiveRadio } from "./DOMContent";
+
+let userData = {
+  units: "imperial",
+  places: ["Dallas", "New York"],
+}
 
 const form = document.getElementById("weather-form");
 form.addEventListener("submit", (e) => {
@@ -27,9 +32,3 @@ const loadWeatherCards = async (obj) => {
 
 
 loadWeatherCards(userData);
-// if (localStorage.length) {
-//   loadWeatherCards(userData);
-// }
-// else {
-
-// }
