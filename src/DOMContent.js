@@ -58,7 +58,7 @@ const addDeleteEvent = (cardContainer) => {
     if (index !== -1) {
       userData.places.splice(index, 1);
     }
-    localStorage.setItem("user", JSON.stringify(userData));
+    localStorage.setItem("weather-app-user", JSON.stringify(userData));
   });
 };
 
@@ -93,7 +93,7 @@ const radioBtnEvents = () => {
   metricBtn.addEventListener("click", (e) => {
     if (userData.units !== "metric") {
       userData.units = "metric";
-      localStorage.setItem("user", JSON.stringify(userData));
+      localStorage.setItem("weather-app-user", JSON.stringify(userData));
       updateTemps();
     }
   });
@@ -102,7 +102,7 @@ const radioBtnEvents = () => {
   imperialBtn.addEventListener("click", (e) => {
     if (userData.units !== "imperial") {
       userData.units = "imperial";
-      localStorage.setItem("user", JSON.stringify(userData));
+      localStorage.setItem("weather-app-user", JSON.stringify(userData));
       updateTemps();
     }
   });

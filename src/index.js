@@ -10,7 +10,7 @@ form.addEventListener("submit", (e) => {
   processWeatherJSON(city).then((res) => {
     renderCard(res, userData.units);
     userData.places.push(res.name);
-    localStorage.setItem("user", JSON.stringify(userData));
+    localStorage.setItem("weather-app-user", JSON.stringify(userData));
   });
 });
 
