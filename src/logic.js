@@ -11,6 +11,19 @@ const getData = () => {
   return userData;
 };
 
+const saveData = (data) => {
+  localStorage.setItem("weather-app-user", JSON.stringify(data));
+}
+
+const removeData = (removeName) => {
+  const data = getData();
+  const places = data.places;
+  console.log(data)
+  const newPlaces = places.filter(name => name !== removeName)
+  data.places = newPlaces;
+  saveData(data)
+}
+
 // Makes a request to the weather API for weather data based on city name
 const getWeatherJSON = async (cityName) => {
   const appID = "d8d60c8c859cb3e31ebf243960d9c642";
@@ -51,7 +64,7 @@ const processWeatherJSON = async (cityName) => {
   }
 };
 
-let userData = getData();
 
-export {userData, processWeatherJSON };
+
+export { getData, processWeatherJSON, saveData, removeData };
 

@@ -1,4 +1,4 @@
-import { userData } from "./logic";
+import { saveData, getData, removeData } from "./logic";
 
 const tempConversion = (kelvin, desiredUnit) => {
   if (desiredUnit === "imperial") {
@@ -54,11 +54,8 @@ const addDeleteEvent = (cardContainer) => {
   const deleteBtn = currentCard.querySelector("#delete-button");
   deleteBtn.addEventListener("click", (e) => {
     currentCard.remove();
-    let index = userData.places.indexOf(e.target.dataset.id);
-    if (index !== -1) {
-      userData.places.splice(index, 1);
-    }
-    localStorage.setItem("weather-app-user", JSON.stringify(userData));
+    removeData(e.target.dataset.id);
+
   });
 };
 
@@ -73,42 +70,45 @@ const renderCard = (obj, desiredUnit) => {
   cardDOMContent(card);
 };
 
-const updateTemps = () => {
+const updateTemps = (desiredUnits) => {
   const feelNodes = Array.from(document.getElementsByClassName("feel"));
   feelNodes.forEach((node) => {
     node.innerText = `Feels like ${tempConversion(
       node.dataset.kelvin,
-      userData.units
+      desiredUnits
     )}`;
   });
 
   const tempNodes = Array.from(document.getElementsByClassName("temp"));
   tempNodes.forEach((node) => {
-    node.innerText = tempConversion(node.dataset.kelvin, userData.units);
+    node.innerText = tempConversion(node.dataset.kelvin, desiredUnits);
   });
 };
 
 const radioBtnEvents = () => {
+  
   const metricBtn = document.getElementById("radio-one");
   metricBtn.addEventListener("click", (e) => {
+    const userData = getData();
     if (userData.units !== "metric") {
       userData.units = "metric";
-      localStorage.setItem("weather-app-user", JSON.stringify(userData));
-      updateTemps();
+      saveData(userData)
+      updateTemps(userData.units);
     }
   });
 
   const imperialBtn = document.getElementById("radio-two");
   imperialBtn.addEventListener("click", (e) => {
+    const userData = getData();
     if (userData.units !== "imperial") {
       userData.units = "imperial";
-      localStorage.setItem("weather-app-user", JSON.stringify(userData));
-      updateTemps();
+      saveData(userData)
+      updateTemps(userData.units);
     }
   });
 };
 
-const setActiveRadio = () => {
+const setActiveRadio = (userData) => {
   if (userData.units == "metric") {
     document.getElementById("radio-one").checked = true;
   } else if (userData.units == "imperial") {

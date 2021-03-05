@@ -1,31 +1,44 @@
-import {userData, processWeatherJSON } from "./logic";
+import { getData, processWeatherJSON } from "./logic";
 import { radioBtnEvents, renderCard, setActiveRadio } from "./DOMContent";
 
-
-
-const form = document.getElementById("weather-form");
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const city = form["city"].value;
-  processWeatherJSON(city).then((res) => {
-    renderCard(res, userData.units);
-    userData.places.push(res.name);
-    localStorage.setItem("weather-app-user", JSON.stringify(userData));
+const setupForm = (userData) => {
+  const form = document.getElementById("weather-form");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const city = form["city"].value;
+    processWeatherJSON(city).then((res) => {
+      renderCard(res, userData.units);
+      userData.places.push(res.name);
+      localStorage.setItem("weather-app-user", JSON.stringify(userData));
+    });
   });
-});
-
-setActiveRadio();
-radioBtnEvents();
+}
 
 // consider re-writing for clarity
 const loadWeatherCards = async (obj) => {
-  Promise.all(
-    obj.places.map(async (place) => {
-      let data = await processWeatherJSON(place);
-      renderCard(data, userData.units);
-    })
-  );
+  try {
+    Promise.all(
+      obj.places.map(async (place) => {
+        let data = await processWeatherJSON(place);
+        renderCard(data, obj.units);
+      })
+    );
+  } catch(err) {
+    console.log(err)
+  }
+
 };
 
 
-loadWeatherCards(userData);
+const startUp = () => {
+  const userData = getData();
+  setupForm(userData)
+  setActiveRadio(userData);
+  radioBtnEvents(userData);
+  loadWeatherCards(userData);
+}
+
+
+
+
+startUp();
